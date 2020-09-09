@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: gateway cgn
+  description: The gateway cgn API
+spec:
+  type: openapi
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: gateway cgn
+      license:
+        name: MIT
+    servers:
+      - url: https://gateway.test1.cgn.it/openapi/v1/spec.json
