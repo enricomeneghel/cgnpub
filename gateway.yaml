@@ -6,11 +6,32 @@ metadata:
 spec:
   type: openapi
   definition: |
-    openapi: "3.0.0"
-    info:
-      version: 1.0.0
-      title: gateway cgn
-      license:
-        name: MIT
-    servers:
-      - url: https://gateway.test1.cgn.it/openapi/v1/spec.json
+
+{
+"swagger": "2.0",
+"info": {2 items},
+"paths": {
+"/api/v1/Profilo/Utente": {
+"get": {
+"tags": [1 item],
+"summary": "Recupera il profilo dell'utente",
+"operationId": "Profilo.Utente_GET",
+"consumes": [],
+"produces": [16 items],
+"parameters": [1 item],
+"responses": {1 item}
+}
+},
+"/api/v1/Profilo/Ufficio": {1 item},
+"/api/v1/Profilo/CreaInvito": {1 item}
+},
+"definitions": {
+"ProfiloUtente": {3 items},
+"Ufficio": {3 items},
+"Servizio": {3 items},
+"DatiUfficio": {3 items},
+"UtenteUfficio": {3 items},
+"DatiCreazioneInvito": {3 items},
+"EsitoCreazioneInvito": {3 items}
+}
+}
