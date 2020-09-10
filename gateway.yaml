@@ -6,32 +6,322 @@ metadata:
 spec:
   type: openapi
   definition: |
-
 {
-"swagger": "2.0",
-"info": {2 items},
-"paths": {
-"/api/v1/Profilo/Utente": {
-"get": {
-"tags": [1 item],
-"summary": "Recupera il profilo dell'utente",
-"operationId": "Profilo.Utente_GET",
-"consumes": [],
-"produces": [16 items],
-"parameters": [1 item],
-"responses": {1 item}
-}
-},
-"/api/v1/Profilo/Ufficio": {1 item},
-"/api/v1/Profilo/CreaInvito": {1 item}
-},
-"definitions": {
-"ProfiloUtente": {3 items},
-"Ufficio": {3 items},
-"Servizio": {3 items},
-"DatiUfficio": {3 items},
-"UtenteUfficio": {3 items},
-"DatiCreazioneInvito": {3 items},
-"EsitoCreazioneInvito": {3 items}
-}
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "gateway API v1"
+    },
+    "paths": {
+        "/api/v1/Profilo/Utente": {
+            "get": {
+                "tags": [
+                    "Profilo"
+                ],
+                "summary": "Recupera il profilo dell'utente",
+                "operationId": "Profilo.Utente_GET",
+                "consumes": [],
+                "produces": [
+                    "application/json;odata.metadata=minimal;odata.streaming=true",
+                    "application/json;odata.metadata=minimal;odata.streaming=false",
+                    "application/json;odata.metadata=minimal",
+                    "application/json;odata.metadata=full;odata.streaming=true",
+                    "application/json;odata.metadata=full;odata.streaming=false",
+                    "application/json;odata.metadata=full",
+                    "application/json;odata.metadata=none;odata.streaming=true",
+                    "application/json;odata.metadata=none;odata.streaming=false",
+                    "application/json;odata.metadata=none",
+                    "application/json;odata.streaming=true",
+                    "application/json;odata.streaming=false",
+                    "application/json",
+                    "application/xml",
+                    "application/prs.mock-odata",
+                    "text/json",
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "identificativo",
+                        "in": "query",
+                        "description": "Identificativo utente",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/ProfiloUtente"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/Profilo/Ufficio": {
+            "get": {
+                "tags": [
+                    "Profilo"
+                ],
+                "summary": "Recupera i dati dell'ufficio con la lista degli utenti",
+                "operationId": "Profilo.Ufficio_GET",
+                "consumes": [],
+                "produces": [
+                    "application/json;odata.metadata=minimal;odata.streaming=true",
+                    "application/json;odata.metadata=minimal;odata.streaming=false",
+                    "application/json;odata.metadata=minimal",
+                    "application/json;odata.metadata=full;odata.streaming=true",
+                    "application/json;odata.metadata=full;odata.streaming=false",
+                    "application/json;odata.metadata=full",
+                    "application/json;odata.metadata=none;odata.streaming=true",
+                    "application/json;odata.metadata=none;odata.streaming=false",
+                    "application/json;odata.metadata=none",
+                    "application/json;odata.streaming=true",
+                    "application/json;odata.streaming=false",
+                    "application/json",
+                    "application/xml",
+                    "application/prs.mock-odata",
+                    "text/json",
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "codice",
+                        "in": "query",
+                        "description": "Codice ufficio di riferimento",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/DatiUfficio"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/Profilo/CreaInvito": {
+            "post": {
+                "tags": [
+                    "Profilo"
+                ],
+                "summary": "Permette di creare un'invito per un utnete per un determinato ufficio",
+                "operationId": "Profilo.CreaInvito_POST",
+                "consumes": [
+                    "application/json;odata.metadata=minimal;odata.streaming=true",
+                    "application/json;odata.metadata=minimal;odata.streaming=false",
+                    "application/json;odata.metadata=minimal",
+                    "application/json;odata.metadata=full;odata.streaming=true",
+                    "application/json;odata.metadata=full;odata.streaming=false",
+                    "application/json;odata.metadata=full",
+                    "application/json;odata.metadata=none;odata.streaming=true",
+                    "application/json;odata.metadata=none;odata.streaming=false",
+                    "application/json;odata.metadata=none",
+                    "application/json;odata.streaming=true",
+                    "application/json;odata.streaming=false",
+                    "application/json",
+                    "application/xml",
+                    "application/prs.mock-odata",
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json"
+                ],
+                "produces": [
+                    "application/json;odata.metadata=minimal;odata.streaming=true",
+                    "application/json;odata.metadata=minimal;odata.streaming=false",
+                    "application/json;odata.metadata=minimal",
+                    "application/json;odata.metadata=full;odata.streaming=true",
+                    "application/json;odata.metadata=full;odata.streaming=false",
+                    "application/json;odata.metadata=full",
+                    "application/json;odata.metadata=none;odata.streaming=true",
+                    "application/json;odata.metadata=none;odata.streaming=false",
+                    "application/json;odata.metadata=none",
+                    "application/json;odata.streaming=true",
+                    "application/json;odata.streaming=false",
+                    "application/json",
+                    "application/xml",
+                    "application/prs.mock-odata",
+                    "text/json",
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "evt",
+                        "in": "body",
+                        "description": "Dati della creazione dell'invito",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/DatiCreazioneInvito"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/EsitoCreazioneInvito"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ProfiloUtente": {
+            "description": "Profilo dell'utnete",
+            "type": "object",
+            "properties": {
+                "CodiceFiscale": {
+                    "description": "Codice fiscaledell'utente",
+                    "type": "string"
+                },
+                "Nome": {
+                    "description": "Nome",
+                    "type": "string"
+                },
+                "Cognome": {
+                    "description": "Cognome",
+                    "type": "string"
+                },
+                "Email": {
+                    "description": "Indirizzo email",
+                    "type": "string"
+                },
+                "IdentificativoUtente": {
+                    "format": "uuid",
+                    "description": "Identificativo utente",
+                    "type": "string"
+                },
+                "Uffici": {
+                    "description": "Lista di uffici a cui l'utnete ha accesso",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Ufficio"
+                    }
+                }
+            }
+        },
+        "Ufficio": {
+            "description": "Dati dell'ufficio",
+            "type": "object",
+            "properties": {
+                "Codice": {
+                    "description": "Codice dell'ufficio",
+                    "type": "string"
+                },
+                "Servizi": {
+                    "description": "Lista dei servizi dell'ufficio",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Servizio"
+                    }
+                }
+            }
+        },
+        "Servizio": {
+            "description": "Dati del servizio",
+            "type": "object",
+            "properties": {
+                "Codice": {
+                    "description": "Codice servizio",
+                    "type": "string"
+                },
+                "Attivo": {
+                    "description": "Indica se attivo",
+                    "type": "boolean"
+                }
+            }
+        },
+        "DatiUfficio": {
+            "description": "Dati dell'ufficio",
+            "type": "object",
+            "properties": {
+                "Codice": {
+                    "description": "Codice ufficio",
+                    "type": "string"
+                },
+                "Utenti": {
+                    "description": "Utenti dell'ufficio",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UtenteUfficio"
+                    }
+                }
+            }
+        },
+        "UtenteUfficio": {
+            "description": "Utente di un ufficio",
+            "type": "object",
+            "properties": {
+                "CodiceFiscale": {
+                    "description": "Codice fiscale utente",
+                    "type": "string"
+                },
+                "Nome": {
+                    "description": "Nome utnete",
+                    "type": "string"
+                },
+                "Cognome": {
+                    "description": "Cognome utente",
+                    "type": "string"
+                }
+            }
+        },
+        "DatiCreazioneInvito": {
+            "description": "Dati per la creazione dell'invito",
+            "type": "object",
+            "properties": {
+                "CodiceUfficio": {
+                    "description": "Codice ufficio dell'inviot",
+                    "type": "string"
+                },
+                "CodiceFiscale": {
+                    "description": "Codice fiscale dell'invito",
+                    "type": "string"
+                },
+                "Nome": {
+                    "description": "Nome dell'inibito",
+                    "type": "string"
+                },
+                "Cognome": {
+                    "description": "Cognome dell nvito",
+                    "type": "string"
+                },
+                "ReturnUrl": {
+                    "description": "Url di riotrno",
+                    "type": "string"
+                }
+            }
+        },
+        "EsitoCreazioneInvito": {
+            "description": "Esito della creazione invito",
+            "type": "object",
+            "properties": {
+                "Success": {
+                    "description": "Successo dell'oeprazione",
+                    "type": "boolean"
+                },
+                "DetectedProblems": {
+                    "description": "Potenziali problemi riscontrati",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "Url": {
+                    "description": "Url a cui l'invito è disponibile",
+                    "type": "string"
+                }
+            }
+        }
+    }
 }
