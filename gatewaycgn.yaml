@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: gateway cgn
+  name: gatewaycgn
   description: The gateway cgn API
 spec:
   type: openapi
